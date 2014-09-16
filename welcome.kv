@@ -1,0 +1,113 @@
+<Welcome>:
+	logLabel: logLabel_id
+	refresh_button: refresh_button_id
+	
+	canvas.before:
+		Color:
+			# 247 244 240
+			rgba: 0.96862, 0.95686, 0.94117, 1
+		Rectangle:
+			pos: self.pos
+			size: self.size
+	
+	BoxLayout:
+		canvas.before:
+			Color:
+				# 247 244 240
+				rgba: 0.96862, 0.95686, 0.94117, 1
+			Rectangle:
+				pos: self.pos
+				size: self.size
+		orientation: 'vertical'
+		Label:
+			canvas.before:
+				Color:
+					# 247 244 240
+					rgba: 0.96862, 0.95686, 0.94117, 1
+				Rectangle:
+					source: "images/logo-giant.png"
+					pos: self.pos
+					size: self.size
+			text: " " #TeaTime
+			font_size: '60sp'
+			font_name: "font/segoe_ui_light.ttf"
+			size_hint_y: None
+			height: root.width
+			padding_y: '170sp'
+			
+			color: (0, 0, 0, 0.95)
+			
+		Label:
+			text: "Obtenez le meilleur de votre thé \nen suivant les conseils \nde vote application"
+			font_name: "font/segoe_ui_light.ttf"
+			font_size: '18sp'
+			halign: 'left'
+			size_hint_y: None
+			height: '150sp'
+			color: (0, 0, 0, 0.85)
+			
+		BoxLayout:
+			## reduction de la taille du bouton
+			size_hint: (0.8,0.3)
+			## position au centre
+			pos_hint: {'center_x':.5, 'center_y': .5}
+			
+			orientation: 'vertical'
+			Button: 
+				id: enterButton
+				selected_color: 0,0,0, 0
+				deselected_color: 1,1,1, 0
+				# 152 175 0
+				background_color: 0.596, 0.68627451 , 0, 1
+				background_normal: ""
+				background_down: ""
+				
+				text: "Bienvenue"
+				font_size: '32sp'
+				color: (0, 0, 0, 0.85)
+				
+				on_press: root.do_enter()
+			
+		Label:
+			id: logLabel_id
+			text: ""
+
+			size_hint_y: None
+			height: '20sp'
+			font_size: '12sp'
+			color: (0, 0, 0, 0.5)
+
+		AnchorLayout:
+			cols: 2
+			size_hint_y: None
+			size_y: '20sp'
+			canvas.before:
+				Color:
+					rgba: 0,0,0, 0.1
+				Rectangle:
+					pos: self.pos
+					size: self.size
+			anchor_x: 'center'
+			anchor_y: 'bottom'
+			size_hint_y: None
+			height: '60sp'
+
+			Button:
+				id: refresh_button_id
+				text: "Recharger"
+				on_press: root.startLoadingJson()
+
+				color: (0, 0, 0, 0.75)
+				font_size: '12sp'
+				
+				size_hint_x: None
+				size_hint_y: None
+				height: '58sp'
+				width: '44sp'
+				padding_y: '18sp'
+
+				background_normal: "images/appbar.refresh.off.png"
+				background_down: "images/appbar.refresh.on.png"
+				border: 0,0,0,0
+				
+				

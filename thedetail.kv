@@ -1,0 +1,255 @@
+#:import sla kivy.adapters.simplelistadapter
+#:import button kivy.uix.button
+#:import label kivy.uix.label
+
+#:set padding_x_label '-20sp'
+#:set padding_x_data -40
+
+#:set text_size_label 28
+#:set text_size_data '22sp'
+
+#:set theme_height 120
+
+<TheDetail>:
+	detail_nom: detail_nom_id
+	detail_temp: detail_temp_id
+	detail_duree: detail_duree_id
+	detail_dose: detail_dose_id
+	detail_description: detail_description_id
+	nomcategorieLabel: nomcategorieLabel_id
+	enteteLayout: enteteLayout_id
+	scrollableContent: scrollableContent_id
+	
+	# Ecran complet
+	BoxLayout:
+		orientation: 'vertical'
+		valign: 'top'
+		#spacing: sp(6)
+		
+		canvas.before:
+			Color:
+				# 247 244 240
+				rgba: 0.96862, 0.95686, 0.94117, 1
+			Rectangle:
+				pos: self.pos
+				size: self.size
+		
+		# Entete
+		GridLayout:
+			
+			cols: 1
+			size_hint_y: None
+			height: sp(95)
+			id: enteteLayout_id
+					
+			# Top Title
+			Label:
+				canvas.before:
+					Color:
+						rgba: 1,1,1, 1
+					Rectangle:
+						pos: self.pos
+						size: self.size
+				id: nomcategorieLabel_id
+				text: "TeaTime > XXX"
+				font_size: '16sp'
+				size_hint_y: None
+				height: '25sp'
+				halign: 'left'
+				text_size: self.size
+				padding: '-10sp', 0
+				font_name: "font/Ubuntu-L.ttf"
+				color: (0, 0, 0, 0.90)
+			
+			# Main title
+			Label: 
+				canvas.before:
+					Color:
+						rgba: 1,1,1, 1
+					Rectangle:
+						pos: self.pos
+						size: self.size
+				text: "XXX"
+				id: detail_nom_id
+				font_size: '32sp'
+				font_name: "font/Ubuntu-L.ttf"
+				color: (0, 0, 0, 0.90)
+				size_hint_y: None
+				height: '60sp'
+	
+			# Liner
+			Label:
+				canvas.before:
+					Color:
+						rgba: 1,1,1, 1
+					Rectangle:
+						source: "images/liner.png"
+						pos: self.pos
+						size: self.size
+				text: " "
+				size_hint_y: None
+				height: '4sp'
+				
+	
+		ScrollView:
+			## Layout to scroll = unique Widget
+			
+			GridLayout:
+				cols: 1
+				id: scrollableContent_id
+				spacing: 10
+				# Force to scroll on the Y-axis : size_hint_y = 1 to display 100% of the widget
+				#size_hint_y: 1
+				# Other way : recalculate all heights
+				size_hint_y: None
+				height: layoutTemperature_id.height + layoutChrono_id.height + layoutLeaf_id.height + layoutDescription_id.height
+				
+				# Temperature
+				BoxLayout:
+					id: layoutTemperature_id
+					orientation: 'horizontal'
+					size_hint_y: None
+					height: sp(theme_height)
+					
+					BoxLayout:
+						orientation: 'vertical'
+						Label:
+							text: "Température de l'eau :"
+							halign: 'left'
+							valign: 'bottom'
+							text_size: self.size
+							font_size: sp(text_size_label)
+							font_name: "font/Ubuntu-M.ttf"
+							color: (0, 0, 0, 0.90)
+							padding_x: padding_x_label
+							
+						
+						Label:
+							id: detail_temp_id
+							halign: 'left'
+							valign: 'top'
+							text_size: self.size
+							text: "XXXXXXXXXXXXXXX"
+							font_size: text_size_data
+							font_name: "font/Ubuntu-L.ttf"
+							color: (0, 0, 0, 0.90)
+							padding_x: sp(padding_x_data)
+					Image:
+						source: "images/bg-temp.png"
+						size_hint_x: None
+						width: '80sp'
+						halign: 'right'
+						valign: 'bottom'
+						
+						
+				# Chrono
+				BoxLayout:
+					id: layoutChrono_id
+					orientation: 'horizontal'
+					size_hint_y: None
+					height: sp(theme_height)
+					BoxLayout:
+						orientation: 'vertical'
+						Label:
+							text: "Durée d'infusion :"
+							halign: 'left'
+							valign: 'bottom'
+							text_size: self.size
+							font_size: sp(text_size_label)
+							font_name: "font/Ubuntu-M.ttf"
+							color: (0, 0, 0, 0.90)
+							padding_x: padding_x_label
+						Label:
+							id: detail_duree_id
+							halign: 'left'
+							valign: 'top'
+							text_size: self.size
+							text: "XXXXXXXXXXXXXXX"
+							font_size: text_size_data
+							font_name: "font/Ubuntu-L.ttf"
+							color: (0, 0, 0, 0.90)
+							padding_x: sp(padding_x_data)
+					
+					Image:
+						source: "images/bg-chrono.png"
+						size_hint_x: None
+						width: '80sp'
+						halign: 'right'
+						valign: 'bottom'
+						
+						
+				# Leaf
+				BoxLayout:
+					id: layoutLeaf_id
+					orientation: 'horizontal'
+					size_hint_y: None
+					height: sp(theme_height)
+					
+					BoxLayout:
+						orientation: 'vertical'
+						Label:
+							text: "Dose :"
+							halign: 'left'
+							valign: 'bottom'
+							text_size: self.size
+							font_size: sp(text_size_label)
+							font_name: "font/Ubuntu-M.ttf"
+							color: (0, 0, 0, 0.90)
+							padding_x: padding_x_label
+						Label:
+							id: detail_dose_id
+							halign: 'left'
+							valign: 'top'
+							text_size: self.size
+							text: "XXXXXXXXXXXXXXX"
+							font_size: text_size_data
+							font_name: "font/Ubuntu-L.ttf"
+							color: (0, 0, 0, 0.90)
+							padding_x: sp(padding_x_data)
+	
+					Image:
+						source: "images/bg-leaf.png"
+						size_hint_x: None
+						width: '80sp'
+						halign: 'right'
+						valign: 'bottom'
+						
+						
+				# Description
+				GridLayout:
+					id: layoutDescription_id
+					cols: 1
+					size_hint_y: None
+					height: label_description_id.texture_size[1] + detail_description_id.texture_size[1]
+					
+					Label:
+						id: label_description_id
+						height: sp(text_size_label + 6)
+						size_hint_y: None 
+						text: "Description :"
+						#valign: 'top'
+						valign: 'bottom'
+						text_size: self.size
+						font_size: sp(text_size_label)
+						font_name: "font/Ubuntu-M.ttf"
+						color: (0, 0, 0, 0.90)
+						padding_x: padding_x_label
+						
+					Label:
+						#canvas.after:
+						#	Line:
+						#		rectangle: self.x+1,self.y+1,self.width-1,self.height-1
+						#		dash_offset: 5
+						#		dash_length: 3
+						id: detail_description_id
+						valign: 'top'
+						halign: 'left'
+						size_hint_y: None
+						text_size: (self.width + (2*padding_x_data), None)
+						text: "X\nX\nX\nX\nX\nX\nX\nX\nX"
+						font_size: '18sp'
+						font_name: "font/Ubuntu-L.ttf"
+						color: (0, 0, 0, 0.90)
+						size: self.parent.width, self.texture_size[1]
+						
+

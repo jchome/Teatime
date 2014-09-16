@@ -1,0 +1,93 @@
+<Categories>:
+	logLabel: logLabel_id
+	containerListView: list_id
+	canvas.before:
+		Color:
+			# 247 244 240
+			rgba: 0.96862, 0.95686, 0.94117, 1
+		Rectangle:
+			pos: self.pos
+			size: self.size
+
+	BoxLayout:
+		id: categoriesLayout
+		orientation: 'vertical'
+		canvas.before:
+			Color:
+				# 247 244 240
+				rgba: 0.96862, 0.95686, 0.94117, 1
+			Rectangle:
+				pos: self.pos
+				size: self.size
+
+		Label:
+			canvas.before:
+				Color:
+					rgba: 1,1,1, 1
+				Rectangle:
+					pos: self.pos
+					size: self.size
+			text: "TeaTime"
+			font_size: '16sp'
+			size_hint_y: None
+			height: '25sp'
+			halign: 'left'
+			text_size: self.size
+			padding: '-10sp', '0'
+			font_name: "font/Ubuntu-L.ttf"
+			color: (0, 0, 0, 0.90)
+			
+		# Main title
+		Label: 
+			canvas.before:
+				Color:
+					rgba: 1,1,1, 1
+				Rectangle:
+					pos: self.pos
+					size: self.size
+			text: "Catégories de thés"
+			font_size: '32sp'
+			font_name: "font/Ubuntu-L.ttf"
+			color: (0, 0, 0, 0.90)
+			size_hint_y: None
+			height: '60sp'
+
+		# Liner
+		Label:
+			canvas.before:
+				Color:
+					rgba: 1,1,1, 1
+				Rectangle:
+					source: "images/liner.png"
+					pos: self.pos
+					size: self.size
+			text: " "
+			size_hint_y: None
+			height: '4sp'
+			
+		# Small Padding
+		Label:
+			canvas.before:
+				Color:
+					rgba: 0.96862, 0.95686, 0.94117, 1
+				Rectangle:
+					pos: self.pos
+					size: self.size
+			text: " "
+			size_hint_y: None
+			height: '6sp'
+			
+		ListView:
+			id: list_id
+			
+		# Log line
+		Label: 
+			id: logLabel_id
+			text: "..."
+			
+			size_hint_y: None
+			height: '20sp'
+			font_size: '12sp'
+			color: (0, 0, 0, 0.5)
+		
+			

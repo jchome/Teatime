@@ -1,0 +1,288 @@
+#:import sla kivy.adapters.simplelistadapter
+#:import button kivy.uix.button
+#:import label kivy.uix.label
+
+#:set padding_x_label '-20sp'
+#:set padding_x_data -40
+
+#:set text_size_label '28sp'
+#:set text_size_data '22sp'
+
+#:set theme_height 200
+
+<TheDetail@BoxLayout>:
+	detail_nom: detail_nom_id
+	detail_temp: detail_temp_id
+	detail_duree: detail_duree_id
+	detail_dose: detail_dose_id
+	detail_description: detail_description_id
+	nomcategorieLabel: nomcategorieLabel_id
+	enteteLayout: enteteLayout_id
+	
+	orientation: 'vertical'
+	valign: 'top'
+	#--size_hint_y: None
+
+	canvas.before:
+		Color:
+			# 247 244 240
+			rgba: 0.96862, 0.95686, 0.94117, 1
+		Rectangle:
+			pos: self.pos
+			size: self.size
+	
+	# Entete
+	BoxLayout:
+		height: sp(250)
+		size_hint_y: None
+		id: enteteLayout_id
+		orientation: 'vertical'
+		valign: 'top'
+		
+		canvas.before:
+			Color:
+				# 247 244 240
+				#rgba: 0.96862, 0.95686, 0.94117, 1
+				rgba: 1,0,0,1
+			Rectangle:
+				pos: self.pos
+				size: self.size
+				
+		# Top Title
+		Label:
+			canvas.before:
+				Color:
+					rgba: 1,1,1, 1
+				Rectangle:
+					pos: self.pos
+					size: self.size
+			id: nomcategorieLabel_id
+			text: "TeaTime > XXX"
+			font_size: '16sp'
+			size_hint_y: None
+			height: '25sp'
+			halign: 'left'
+			text_size: self.size
+			padding: '-10sp', 0
+			font_name: "font/Ubuntu-L.ttf"
+			color: (0, 0, 0, 0.90)
+		
+		# Main title
+		Label: 
+			canvas.before:
+				Color:
+					rgba: 1,1,1, 1
+				Rectangle:
+					pos: self.pos
+					size: self.size
+			text: "XXX"
+			id: detail_nom_id
+			font_size: '32sp'
+			font_name: "font/Ubuntu-L.ttf"
+			color: (0, 0, 0, 0.90)
+			size_hint_y: None
+			height: '60sp'
+
+		# Liner
+		Label:
+			canvas.before:
+				Color:
+					rgba: 1,1,1, 1
+				Rectangle:
+					source: "images/liner.png"
+					pos: self.pos
+					size: self.size
+			text: " "
+			size_hint_y: None
+			height: '4sp'
+			
+		# Small Padding
+		Label:
+			canvas.before:
+				Color:
+					rgba: 0.96862, 0.95686, 0.94117, 1
+				Rectangle:
+					pos: self.pos
+					size: self.size
+			text: " "
+			size_hint_y: None
+			height: '6sp'
+
+	#ScrollView:
+	#	size_hint: (None, None)
+	BoxLayout:
+		orientation: 'vertical'
+		spacing: 10
+		#size_hint_y: None
+		
+		BoxLayout:
+			orientation: 'vertical'
+			spacing: 0, '20sp'
+			
+			# Temperature
+			BoxLayout:
+				orientation: 'horizontal'
+				size_hint_y: None
+				height: sp(theme_height)
+				
+				BoxLayout:
+					orientation: 'vertical'
+					Label:
+						text: "Température de l'eau :"
+						halign: 'left'
+						valign: 'bottom'
+						text_size: self.size
+						font_size: text_size_label
+						font_name: "font/Ubuntu-M.ttf"
+						color: (0, 0, 0, 0.90)
+						padding_x: padding_x_label
+						
+					
+					Label:
+						id: detail_temp_id
+						halign: 'left'
+						valign: 'top'
+						text_size: self.size
+						text: "XXXXXXXXXXXXXXX"
+						font_size: text_size_data
+						font_name: "font/Ubuntu-L.ttf"
+						color: (0, 0, 0, 0.90)
+						padding_x: sp(padding_x_data)
+				Image:
+					source: "images/bg-temp.png"
+					size_hint_x: None
+					width: '80sp'
+					halign: 'right'
+					valign: 'bottom'
+				
+			# Chrono
+			BoxLayout:
+				orientation: 'horizontal'
+				size_hint_y: None
+				height: sp(theme_height)
+				BoxLayout:
+					orientation: 'vertical'
+					Label:
+						text: "Durée d'infusion :"
+						halign: 'left'
+						valign: 'bottom'
+						text_size: self.size
+						font_size: text_size_label
+						font_name: "font/Ubuntu-M.ttf"
+						color: (0, 0, 0, 0.90)
+						padding_x: padding_x_label
+					Label:
+						id: detail_duree_id
+						halign: 'left'
+						valign: 'top'
+						text_size: self.size
+						text: "XXXXXXXXXXXXXXX"
+						font_size: text_size_data
+						font_name: "font/Ubuntu-L.ttf"
+						color: (0, 0, 0, 0.90)
+						padding_x: sp(padding_x_data)
+				
+				Image:
+					source: "images/bg-chrono.png"
+					size_hint_x: None
+					width: '80sp'
+					halign: 'right'
+					valign: 'bottom'
+				
+			# Leaf
+			BoxLayout:
+				orientation: 'horizontal'
+				size_hint_y: None
+				height: sp(theme_height)
+				
+				BoxLayout:
+					orientation: 'vertical'
+					Label:
+						text: "Dose :"
+						halign: 'left'
+						valign: 'bottom'
+						text_size: self.size
+						font_size: text_size_label
+						font_name: "font/Ubuntu-M.ttf"
+						color: (0, 0, 0, 0.90)
+						padding_x: padding_x_label
+					Label:
+						id: detail_dose_id
+						halign: 'left'
+						valign: 'top'
+						text_size: self.size
+						text: "XXXXXXXXXXXXXXX"
+						font_size: text_size_data
+						font_name: "font/Ubuntu-L.ttf"
+						color: (0, 0, 0, 0.90)
+						padding_x: sp(padding_x_data)
+
+				Image:
+					source: "images/bg-leaf.png"
+					size_hint_x: None
+					width: '80sp'
+					halign: 'right'
+					valign: 'bottom'
+			
+			# Description
+			BoxLayout:
+				orientation: 'horizontal'
+				size_hint_y: None
+				height: sp(theme_height)
+				
+				BoxLayout:
+					orientation: 'vertical'
+					Label:
+						text: "Description :"
+						halign: 'left'
+						valign: 'bottom'
+						text_size: self.size
+						font_size: text_size_label
+						font_name: "font/Ubuntu-M.ttf"
+						color: (0, 0, 0, 0.90)
+						padding_x: padding_x_label
+					Label:
+						id: detail_description_id
+						halign: 'left'
+						#valign: 'top'
+						#text_size: (self.width , self.height) 
+						text_size: (self.width + (2 * padding_x_data) , None)
+						text: "XXXXXXXXXXXXXXX"
+						font_size: '18sp'
+						font_name: "font/Ubuntu-L.ttf"
+						color: (0, 0, 0, 0.90)
+						
+
+					
+			# Empty label to move previous widgets to the top of the screen
+			Label:
+				text: " "
+		
+	AnchorLayout:
+		canvas.before:
+			Color:
+				rgba: 0,0,0, 0.1
+			Rectangle:
+				pos: self.pos
+				size: self.size
+		anchor_x: 'center'
+		anchor_y: 'bottom'
+		size_hint_y: None
+		height: '60sp'
+		
+		Button:
+			text: "Retour"
+			color: (0, 0, 0, 0.75)
+			font_size: '12sp'
+			on_press: root.retour()
+			
+			size_hint_x: None
+			size_hint_y: None
+			height: '58sp'
+			width: '44sp'
+			padding_y: '18sp'
+			
+			background_normal: 'images/retour-off.png'
+			background_down: 'images/retour-on.png'
+			border: 0,0,0,0
+		
